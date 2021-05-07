@@ -1,0 +1,64 @@
+String selectedValue=jComboBox2.getSelectedItem().toString();
+ int selection=jComboBox2.getSelectedIndex();
+
+
+ switch(selection)
+ {
+ case 0:
+
+ try {
+ db database=new db();
+ ResultSet rs= database.searchQuery("SELECT * FROM `banking` WHERE
+username='"+username1+"' AND password='"+password1+"' ");
+ if(rs.isBeforeFirst()){
+ while(rs.next()){
+ String account_holder= rs.getString(4);
+ String account_number= rs.getString(1);
+ String ph_num= rs.getString(7);
+ String balance= rs.getString(17);
+ String cif_num= rs.getString(2);
+ String mail_id= rs.getString(8);
+ jTextField1.setText(account_holder);
+ jTextField2.setText(account_number);
+ jTextField3.setText(ph_num);
+ jTextField4.setText(balance);
+ jTextField5.setText(cif_num);
+ jTextField6.setText(mail_id);
+
+
+ }
+ }
+
+ } catch (SQLException ex) {
+ Logger.getLogger(accountinfo.class.getName()).log(Level.SEVERE, null, ex);
+ }
+ break;
+
+ case 1:
+ try {
+ db database=new db();
+ ResultSet rs= database.searchQuery("SELECT * FROM `banking` WHERE
+username='"+username1+"' AND password='"+password1+"' ");
+ if(rs.isBeforeFirst()){
+ while(rs.next()){
+ String account_holder= rs.getString(4);
+ String account_number= rs.getString(1);
+ String ph_num= rs.getString(7);
+ String balance= rs.getString(16);
+ String cif_num= rs.getString(2);
+ String mail_id= rs.getString(8);
+ jTextField1.setText(account_holder);
+ jTextField2.setText(account_number);
+ jTextField3.setText(ph_num);
+ jTextField4.setText(balance);
+ jTextField5.setText(cif_num);
+ jTextField6.setText(mail_id);
+ }
+ }
+
+ } catch (SQLException ex) {
+ Logger.getLogger(accountinfo.class.getName()).log(Level.SEVERE, null, ex);
+ }
+ break;
+ default:
+ break; } 
