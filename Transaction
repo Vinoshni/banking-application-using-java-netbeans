@@ -1,0 +1,45 @@
+if (Integer.parseInt(jTextField2.getText())==OTP){
+
+ try{
+ db database=new db();
+
+ String sql="UPDATE `banking` SET `beneficiary
+name`='"+beneficiary_name1+"',`bank`='"+bank_name1+"',`ifsc
+code`='"+neft_ifsc_code1+"',`branch name`='"+branchname1+"',`account
+number1`='"+account_number2+"',`amount`='"+a1+"',`account type`='"+account_type1+"'
+WHERE username='"+username1+"' AND password='"+password1+"'";
+ String sql1="UPDATE `banking` SET savings=savings-amount WHERE
+username='"+username1+"' AND password='"+password1+"' ";
+ String sql2="UPDATE `banking` SET current=current-amount WHERE
+username='"+username1+"' AND password='"+password1+"' ";
+
+ try{
+ Connection c =database.getConnection();
+ Statement stmt = c.createStatement();
+ stmt.executeUpdate(sql);
+ if(account_type.equalsIgnoreCase(s)){
+ stmt.executeUpdate(sql1);
+ }
+ else{
+ stmt.executeUpdate(sql2);
+ }
+
+ }
+ catch(Exception e)
+ {
+ JOptionPane.showMessageDialog(null, e);
+ }
+ }
+ catch(Exception e)
+ {
+ JOptionPane.showMessageDialog(null, e);
+ }
+
+ JOptionPane.showMessageDialog(null, "Your transaction is successfull");
+ Optionpage op=new Optionpage();
+ op.setVisible(true);
+ }
+ else{
+ JOptionPane.showMessageDialog(null, "Wrong OTP");
+ }
+ }
