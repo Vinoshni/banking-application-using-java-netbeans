@@ -1,0 +1,10 @@
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)
+{ Desktop d= Desktop.getDesktop();
+try {
+d.browse(new URI("https://drive.google.com/file/d/10BVZ78e-0mdiw77aVWxU4OrJuyy7y2Q/view?usp=drivesdk"));
+} catch (URISyntaxException ex) {
+Logger.getLogger(Optionpage.class.getName()).log(Level.SEVERE, null, ex);
+} catch (IOException ex) {
+Logger.getLogger(Optionpage.class.getName()).log(Level.SEVERE, null, ex);
+}
+}
