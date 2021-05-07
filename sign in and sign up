@@ -1,0 +1,63 @@
+private void jButton1ActionPerformed(java.awt.event.ActionEvent
+evt) {
+try{
+db database=new db();
+username=jTextField1.getText();
+password=jPasswordField1.getText();
+ResultSet rs= database.searchQuery("SELECT * FROM `banking`
+WHERE username='"+username+"' AND password='"+password+"'");
+if(rs.isBeforeFirst()){
+while(rs.next()){
+if(rs.getString(5).equalsIgnoreCase(username)&&rs.getString(6).equalsIgnoreCase(password)){
+if(jTextField2.getText().compareTo(jLabel5.getText())==0)
+{
+Optionpage p=new Optionpage();
+p.setVisible(true);
+this.dispose();
+}
+else{
+JOptionPane.showMessageDialog(this,"wrong captcha");
+}
+}
+}
+}
+else{
+JOptionPane.showMessageDialog(this,"invalid username or password");
+}
+}
+catch(Exception ex){
+System.out.println("Error"+ex.getMessag
+e());
+}
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+db database=new db();
+String
+account_number=jTextField1.getText();
+String cif_number=jTextField2.getText();
+String
+branch_code=jTextField3.getText();
+String username=jTextField4.getText();
+String password=jTextField5.getText();
+String
+phone_number=jTextField6.getText();
+String mail_id=jTextField7.getText();
+String holder_name=jTextField8.getText();
+int amount=20000;
+String sql="INSERT INTO `banking`(`account_no`,`CIF_no`,`branch_code`,`username`,
+`password`,`phone_number`,`mail_id`,`holder_name`,`savings`,`current`)
+VALUES('"+account_number+"','"+cif_number+"','"+branch_code+"','"+username+"','"+passwo
+rd+"','"+ phone_number+"','"+mail_id+"','"+holder_name+"','"+amount+"','"+amount+"')";
+try{
+Connection c
+=database.getConnection();
+Statement stmt = c.createStatement();
+stmt.executeUpdate(sql);
+JOptionPane.showMessageDialog(this,"registered successfully");
+Loginpage op=new Loginpage();
+op.setVisible(true);
+}
+catch(Exception e)
+{
+JOptionPane.showMessageDialog(null, e);
+}
+}
