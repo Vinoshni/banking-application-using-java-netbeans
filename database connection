@@ -1,0 +1,38 @@
+package Designpatterns;
+import java.sql.*;
+public class db {
+public Connection conn;
+public PreparedStatement
+st; public ResultSet rs;
+public Connection getConnection()
+{
+try
+{
+String
+url1="jdbc:mysql://localhost/bank";
+String user="root";
+String pass="";
+Class.forName("com.mysql.jdbc.Driver");
+conn=DriverManager.getConnection(url1, user, pass);
+}
+catch(SQLException ex){
+System.out.println("Error"+ex.getMessage
+());}
+catch(ClassNotFoundException ex){
+System.out.println("Error"+ex.getMessage());
+}
+finally{
+return conn;
+}
+}
+public ResultSet searchQuery(String
+sql){ try{
+getConnection();
+Statement st=conn.createStatement(
+ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+rs=st.executeQuery(sql);
+}
+catch(SQLException ex){
+System.out.println("Error"+ex.getMessage());
+}
+return rs;
