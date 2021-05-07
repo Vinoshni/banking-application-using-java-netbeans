@@ -1,0 +1,56 @@
+String selectedValue=jComboBox1.getSelectedItem().toString();
+ if(selectedValue.equalsIgnoreCase(a)){
+ try {
+ db database=new db();
+ ResultSet rs= database.searchQuery("SELECT * FROM `banking` WHERE
+username='"+username1+"' AND password='"+password1+"' ");
+ if(rs.isBeforeFirst()){
+ while(rs.next()){
+ String account_num= rs.getString(1);
+ String account_type=selectedValue;
+ String beneficiary_name= rs.getString(9);
+ String amount= rs.getString(14);
+ String balance= rs.getString(17);
+
+ jTextField1.setText(account_num);
+ jTextField2.setText( account_type);
+ jTextField4.setText(beneficiary_name);
+ jTextField3.setText(amount);
+ jTextField5.setText(balance);
+
+
+ }
+ }
+ 
+ } catch (SQLException ex) {
+ Logger.getLogger(accountinfo.class.getName()).log(Level.SEVERE, null, ex);
+ }
+
+ }
+ else
+ {
+ try {
+ db database=new db();
+ ResultSet rs= database.searchQuery("SELECT * FROM `banking` WHERE
+username='"+username1+"' AND password='"+password1+"' ");
+ if(rs.isBeforeFirst()){
+ while(rs.next()){
+ String account_num= rs.getString(1);
+ String account_type= selectedValue;
+ String beneficiary_name= rs.getString(9);
+ String amount= rs.getString(14);
+ String balance= rs.getString(16);
+
+ jTextField1.setText(account_num);
+ jTextField2.setText(account_type);
+ jTextField4.setText(beneficiary_name);
+ jTextField3.setText(amount);
+ jTextField5.setText(balance);
+
+ }
+ }
+
+ } catch (SQLException ex) {
+ Logger.getLogger(accountinfo.class.getName()).log(Level.SEVERE, null, ex);
+ }
+ }
